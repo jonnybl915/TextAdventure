@@ -24,11 +24,11 @@ public class Player {
 
         if (weapon.equalsIgnoreCase("sword")) { //after if statements here do not put a ";"
             System.out.println("The sword is a wonderful choice " + name + "!");
-            System.out.println("you now have " + items.size() + " items");
+            //System.out.println("you now have " + items.size() + " items");
         }
         else if (weapon.equalsIgnoreCase("mace")){
             System.out.println("The mace is a wonderful choice " + name + "!");
-            System.out.println("you now have " + items.size() + " items");
+            //System.out.println("you now have " + items.size() + " items");
         }
         else {
             throw new Exception("Invalid weapon choice");
