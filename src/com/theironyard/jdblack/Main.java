@@ -4,22 +4,17 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in); //global variable which can be used anywhere
-
+    static Player player = new Player();
     public static void main(String[] args) throws Exception {
         System.out.println("Welcome Traveler!");
 
-        Player player = new Player();
 
         player.chooseName();
         player.chooseWeapon();
         player.chooseLocation();
+
         player.findItem("armor");
         player.findItem("potion");
-        player.findItem("sword");
-        player.findItem("mace");
-
-
-
 
 //        System.out.println("Type a number...");
 //        String num = scanner.nextLine();
@@ -32,5 +27,21 @@ public class Main {
 //        else {
 //            System.out.println("That's a positive number");
 //        }
+    }
+    public static String nextLine() {
+        String line = scanner.nextLine();
+        while (line.startsWith("/")) {
+            if (line.equals("/inv")) {
+                for (String item : player.items) {
+                    System.out.println(item);
+                }
+            }
+            else {
+                System.out.println("Aww Bugger, Command Not Found!!");
+            }
+
+            line = scanner.nextLine(); //ready for input again
+        }
+        return line;
     }
 }

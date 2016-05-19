@@ -14,13 +14,13 @@ public class Player {
 
     public void chooseName() {
         System.out.println("What is your name?");
-        name = Main.scanner.nextLine(); //need to store it in a variable,
+        name = Main.nextLine(); //need to store it in a variable,
         System.out.println("Welcome, " + name);
     }
 
     public void chooseWeapon() throws Exception {
         System.out.println("Choose your weapon [sword/mace/]");
-        weapon = Main.scanner.nextLine(); //we can keep using the scanner.nextline to read from the user input
+        weapon = Main.nextLine(); //we can keep using the scanner.nextline to read from the user input
 
         if (weapon.equalsIgnoreCase("sword")) { //after if statements here do not put a ";"
             System.out.println("The sword is a wonderful choice " + name + "!");
@@ -37,7 +37,7 @@ public class Player {
 
      public void chooseLocation() throws Exception {
          System.out.println("Choose your location [forest/tunnel]");
-         location = Main.scanner.nextLine();
+         location = Main.nextLine();
 
          if (location.equalsIgnoreCase("forest")) {
              System.out.println(name + " is Entering the Forest...");
@@ -51,10 +51,13 @@ public class Player {
     }
     public void findItem(String item) {
         System.out.println("You have stumbled upon a " + item + " Would you like to pick it up [Y/N]");
-        String answer = Main.scanner.nextLine();
+        String answer = Main.nextLine();
         if (answer.equalsIgnoreCase("y")) {
             items.add(item);
             System.out.println("you now have " + items.size() + " items");
+        }
+        if (answer.equalsIgnoreCase("n")) {
+            System.out.println("it did not look like a good " + item + " anyway");
         }
     }
 }
