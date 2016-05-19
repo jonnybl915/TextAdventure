@@ -1,5 +1,8 @@
 package com.theironyard.jdblack;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by jonathandavidblack on 5/18/16.
  */
@@ -7,22 +10,25 @@ public class Player {
     String name;
     String weapon;
     String location;
+    ArrayList<String> items = new ArrayList<>();
 
     public void chooseName() {
         System.out.println("What is your name?");
-        String name = Main.scanner.nextLine(); //need to store it in a variable
+        name = Main.scanner.nextLine(); //need to store it in a variable,
         System.out.println("Welcome, " + name);
     }
 
     public void chooseWeapon() throws Exception {
         System.out.println("Choose your weapon [sword/mace/]");
-        String weapon = Main.scanner.nextLine(); //we can keep using the scanner.nextline to read from the user input
+        weapon = Main.scanner.nextLine(); //we can keep using the scanner.nextline to read from the user input
 
         if (weapon.equalsIgnoreCase("sword")) { //after if statements here do not put a ";"
-            System.out.println("Sword is a wonderful choice " + name + "!");
+            System.out.println("The sword is a wonderful choice " + name + "!");
+            System.out.println("you now have " + items.size() + " items");
         }
         else if (weapon.equalsIgnoreCase("mace")){
-            System.out.println("Mace is a wonderful choice " + name + "!");
+            System.out.println("The mace is a wonderful choice " + name + "!");
+            System.out.println("you now have " + items.size() + " items");
         }
         else {
             throw new Exception("Invalid weapon choice");
@@ -30,18 +36,26 @@ public class Player {
     }
 
      public void chooseLocation() throws Exception {
-         System.out.println("Choose your location [forest/tunnel");
-         String location = Main.scanner.nextLine();
+         System.out.println("Choose your location [forest/tunnel]");
+         location = Main.scanner.nextLine();
 
          if (location.equalsIgnoreCase("forest")) {
-             System.out.println("Entering Forest...");
+             System.out.println(name + " is Entering the Forest...");
          }
          else if (location.equalsIgnoreCase("tunnel")) {
-             System.out.println("Entering tunnel...");
+             System.out.println(name + " is Entering the Tunnel...");
          }
          else {
              throw new Exception("Invalid location...");
          }
+    }
+    public void findItem(String item) {
+        System.out.println("You have stumbled upon a " + item + " Would you like to pick it up [Y/N]");
+        String answer = Main.scanner.nextLine();
+        if (answer.equalsIgnoreCase("y")) {
+            items.add(item);
+            System.out.println("you now have " + items.size() + " items");
+        }
     }
 }
 
