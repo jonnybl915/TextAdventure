@@ -6,11 +6,16 @@ import java.util.HashMap;
 /**
  * Created by jonathandavidblack on 5/18/16.
  */
-public class Player {
-    String name;
+public class Player extends Character {
     String weapon;
     String location;
+
     ArrayList<String> items = new ArrayList<>();
+
+    public Player() {
+        this.health = 20;
+        this.damage = 20;
+    }
 
     public void chooseName() {
         System.out.println("What is your name?");
@@ -23,11 +28,11 @@ public class Player {
         weapon = Main.nextLine(); //we can keep using the scanner.nextline to read from the user input
 
         if (weapon.equalsIgnoreCase("sword")) { //after if statements here do not put a ";"
-            System.out.println("The sword is a wonderful choice " + name + "!");
+            System.out.println("The sword is a wonderful choice " + name + "!"); //use string formatting
             //System.out.println("you now have " + items.size() + " items");
         }
         else if (weapon.equalsIgnoreCase("mace")){
-            System.out.println("The mace is a wonderful choice " + name + "!");
+            System.out.println("The mace is a wonderful choice " + name + "!"); //use string formatting
             //System.out.println("you now have " + items.size() + " items");
         }
         else {
@@ -50,7 +55,7 @@ public class Player {
          }
     }
     public void findItem(String item) {
-        System.out.printf("You have stumbled upon a %s Would you like to pick it up [Y/N]\n", item);
+        System.out.printf("You have stumbled upon %s Would you like to pick it up [Y/N]\n", item);
         String answer = Main.nextLine();
         if (answer.equalsIgnoreCase("y")) {
             items.add(item);
