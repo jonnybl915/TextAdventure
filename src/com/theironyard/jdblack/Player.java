@@ -15,7 +15,7 @@ public class Player {
     public void chooseName() {
         System.out.println("What is your name?");
         name = Main.nextLine(); //need to store it in a variable,
-        System.out.println("Welcome, " + name);
+        System.out.printf("Welcome, %s\n", name);
     }
 
     public void chooseWeapon() throws Exception {
@@ -50,11 +50,11 @@ public class Player {
          }
     }
     public void findItem(String item) {
-        System.out.println("You have stumbled upon a " + item + " Would you like to pick it up [Y/N]");
+        System.out.printf("You have stumbled upon a %s Would you like to pick it up [Y/N]\n", item);
         String answer = Main.nextLine();
         if (answer.equalsIgnoreCase("y")) {
             items.add(item);
-            System.out.println("you now have " + items.size() + " items");
+            System.out.printf("you now have %s items\n", items.size());
         }
         if (answer.equalsIgnoreCase("n")) {
             System.out.println("it did not look like a good " + item + " anyway");
