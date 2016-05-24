@@ -19,6 +19,10 @@ public class Main {
         Enemy orc = new Enemy("Orc", 10, 10);
         player.battle(orc);
 
+        System.out.println(player);
+        System.out.println(orc);
+
+
 //        System.out.println("Type a number...");
 //        String num = scanner.nextLine();
 //

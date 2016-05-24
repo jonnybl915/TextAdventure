@@ -25,4 +25,13 @@ public class Character {
             System.out.printf("%s has died.\n", enemy.name);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", damage=" + damage +
+                '}';
+    }
 }
