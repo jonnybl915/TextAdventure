@@ -2,6 +2,7 @@ package com.theironyard.jdblack;
 
 import jodd.json.JsonParser;
 import jodd.json.JsonSerializer;
+import sun.security.x509.AVA;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,8 +17,8 @@ public class Main {
     static Player player;
 
     public static void main(String[] args) throws Exception {
-        player = loadGame();
-        if(player == null){
+        player = loadGame(SAVE_FILE);
+        if(player == null) {
             player = new Player();
             System.out.println("Starting new game.");
         }
@@ -46,6 +47,7 @@ public class Main {
 
         System.out.println(player);
         System.out.println(orc);
+        saveGame(player, SAVE_FILE);
 
     }
 
@@ -58,7 +60,7 @@ public class Main {
                 }
             }
             else if(line.equals("/save")) {
-                saveGame();
+                saveGame(player, SAVE_FILE);
             }
             else {
                 System.out.println("Aww Bugger, Command Not Found!!");
@@ -69,11 +71,11 @@ public class Main {
         return line;
     }
 
-    public static void saveGame() {
+    public static void saveGame(Player player, String filename) {
         JsonSerializer serializer = new JsonSerializer();
         String json = serializer.include("*").serialize(player);
 
-        File f = new File(SAVE_FILE);
+        File f = new File(filename);
         try {
             FileWriter fw = new FileWriter(f);
             fw.write(json);
@@ -83,8 +85,8 @@ public class Main {
         }
     }
 
-    public static Player loadGame() {
-        File f = new File(SAVE_FILE);
+    public static Player loadGame(String filename) {
+        File f = new File(filename);
         try {
             Scanner scanner = new Scanner(f);
             scanner.useDelimiter("\\Z");
