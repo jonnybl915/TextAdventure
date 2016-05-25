@@ -54,6 +54,19 @@ public class Player extends Character {
              throw new Exception("Invalid location...");
          }
     }
+
+    public String getWeapon() {
+        return weapon;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public ArrayList<String> getItems() {
+        return items;
+    }
+
     public void findItem(String item) {
         System.out.printf("You have stumbled upon %s Would you like to pick it up [Y/N]\n", item);
         String answer = Main.nextLine();
@@ -64,6 +77,8 @@ public class Player extends Character {
         if (answer.equalsIgnoreCase("n")) {
             System.out.println("it did not look like a good " + item + " anyway");
         }
+
+
     }
 }
 
