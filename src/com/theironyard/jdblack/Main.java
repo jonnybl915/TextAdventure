@@ -2,8 +2,6 @@ package com.theironyard.jdblack;
 
 import jodd.json.JsonParser;
 import jodd.json.JsonSerializer;
-import sun.security.x509.AVA;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
